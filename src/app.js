@@ -5,9 +5,17 @@ const port = 7000;
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
+const mongoose = require("mongoose");
+mongoose.set("strictQuery", false);
 
 // routes
 const messageRoute = require("./routes/message");
+
+// init mongoose
+main().catch((err) => console.log(err));
+async function main() {
+  await mongoose.connect(process.env.MONGODB_URI);
+}
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
