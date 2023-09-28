@@ -1,11 +1,19 @@
 const express = require("express");
 const router = express.Router();
-const emailController = require("../controller/email.controller");
+const emailController = require("../controller/message.controller");
 
 router.get("/", (req, res) => {
-  res.send({ statusCode: req.statusCode, message: "Hello" });
+  res.send({ statusCode: res.statusCode, message: "Hello" });
 });
-router.get("/messages", emailController.emailRead);
-router.post("/create-message", emailController.emailPost);
+router.get("/messages", emailController.messageGet);
 
+router.post("/create-message", emailController.messagePost);
+
+// app.delete("/messages/:messageId", (req, res) => {
+//   res.json({ statusCode: res.statusCode, message: "Delete employer message" });
+// });
+
+// app.get("/messages/:messageId", (req, res) => {
+//   res.json({ statusCode: res.statusCode, message: "Retrieved a message" });
+// });
 module.exports = router;

@@ -1,4 +1,4 @@
-exports.emailPost = [
+exports.messagePost = [
   (req, res) => {
     console.log({
       statusCode: res.statusCode,
@@ -17,7 +17,7 @@ exports.emailPost = [
   },
 ];
 
-exports.emailRead = [
+exports.messageGet = [
   (req, res, next) => {
     const headerBearer = req.headers["authorization"];
     console.log(headerBearer);
