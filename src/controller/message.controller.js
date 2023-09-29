@@ -11,13 +11,16 @@ exports.messagePost = [
     });
     try {
       await message.save();
-      console.log("saved");
     } catch (err) {
-      console.log("cant save shit");
+      res.send({
+        statusCode: 502,
+        message: "Unable to send your message at this time.",
+      });
+      throw err;
     }
     res.send({
       statusCode: res.statusCode,
-      message: "Message sent successfully",
+      message: "Message sent successfully!",
     });
   },
 ];
